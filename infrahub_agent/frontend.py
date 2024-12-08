@@ -12,19 +12,25 @@ This is an early prototype and is not intended for production use.
 
 st.sidebar.warning(INJECTION_WARNING, icon="⚠️")
 # User inputs
+infrahub_url = st.sidebar.text_input(
+    label="Infrahub URL",
+    placeholder="https://localhost:8000",
+    key="infrahub_url",
+)
 infrahub_key = st.sidebar.text_input(
     label="Infrahub API Key",
     type="password",
-)
-infrahub_url = st.sidebar.text_input(
-    label="Infrahub URL", placeholder="https://localhost:8000"
+    key="infrahub_key",
 )
 openai_api_key = st.sidebar.text_input(
     label="OpenAI API Key",
     type="password",
+    key="openai_api_key",
 )
 radio_opt = ["No", "Yes"]
-selected_opt = st.sidebar.radio(label="I am aware of the risks.", options=radio_opt)
+selected_opt = st.sidebar.radio(
+    label="I am aware of the risks.", options=radio_opt, key="accept_risk"
+)
 if radio_opt.index(selected_opt) == 0:
     st.info("Please accept the risk")
     st.stop()
