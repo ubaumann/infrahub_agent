@@ -27,11 +27,12 @@ openai_api_key = st.sidebar.text_input(
     type="password",
     key="openai_api_key",
 )
-radio_opt = ["No", "Yes"]
-selected_opt = st.sidebar.radio(
-    label="I am aware of the risks.", options=radio_opt, key="accept_risk"
+accept_risk = st.sidebar.toggle(
+    label="I am aware of the risks.",
+    key="accept_risk",
+    value=False,
 )
-if radio_opt.index(selected_opt) == 0:
+if not accept_risk:
     st.info("Please accept the risk")
     st.stop()
 

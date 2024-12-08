@@ -13,7 +13,7 @@ def test_run_risk() -> None:
     at.run()
     assert at.info[0].value == "Please accept the risk"
 
-    at.radio(key="accept_risk").set_value("Yes").run()
+    at.toggle(key="accept_risk").set_value(True).run()
     assert at.info[0].value == "Please add your API keys to continue."
     assert not at.exception
 
@@ -21,7 +21,7 @@ def test_run_risk() -> None:
 def test_run_all_infos() -> None:
     at = AppTest.from_file("infrahub_agent/frontend.py")
     at.run()
-    at.radio(key="accept_risk").set_value("Yes")
+    at.toggle(key="accept_risk").set_value(True)
     at.text_input(key="infrahub_url").input("https://localhost:8000")
     at.text_input(key="infrahub_key").input("my key")
     at.text_input(key="openai_api_key").input("my api")
